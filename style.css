@@ -54,8 +54,16 @@ a:visited {
 .grid {
     height: fit-content;
     display: grid;
-    grid-template: repeat(15, 10rem) / repeat(12, 1fr);
+    grid-template: repeat(15, 10rem) / repeat(12, minmax(100px, 1fr));
     grid-gap: .5rem;
+}
+.marginleft {
+    grid-area: 1 / 1 / 16 / 2;
+    visibility: collapse;
+}
+.marginright {
+    grid-area: 1 / 12 / 16 / 13;
+    visibility: collapse;
 }
 header {
     display: flex;
