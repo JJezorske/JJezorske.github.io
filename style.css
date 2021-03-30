@@ -55,20 +55,23 @@ a:visited {
     height: fit-content;
     display: grid;
     grid-template: repeat(15, 10rem) / repeat(12, minmax(100px, 1fr));
+    grid-auto-rows: 10rem;
     grid-gap: .5rem;
+    position: relative;
+    top:143px;
+
 }
-.marginleft {
-    grid-area: 1 / 1 / 16 / 2;
-    visibility: collapse;
-}
-.marginright {
-    grid-area: 1 / 12 / 16 / 13;
-    visibility: collapse;
-}
+
 header {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    border-bottom: 1px dashed gold;
 }
 nav ul li{
     list-style-type: none;
@@ -78,11 +81,13 @@ nav ul li{
 }
 article.about {
     grid-area: 1 / 2 / span 2 / span 10;
+    background-color: rgba(102, 51, 153, 0);
+    margin-bottom: 143px;
 }
 article#projects {
     grid-area: 3 / 2 / 14 / 12;
     display: grid;
-    grid-template: repeat(11, 10rem) / repeat(4, 1fr);
+    grid-template-columns: repeat( auto-fit, minmax(9rem, 1fr) );
     grid-gap: .5rem;
     border: 1px dashed cornflowerblue;
 }
@@ -94,15 +99,20 @@ figure.wumpus {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    text-align: center;
 }
 figure.oreo {
     grid-area: 5 / 1 / 10 / 5;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    text-align: center;
 }
 div.mixed {
     grid-area: 10 / 1 / 12 / 5;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     border: 1px dashed cornflowerblue;
 }
 div.mixed button {
@@ -125,7 +135,6 @@ section#skills li img{
 }
 figure img {
     height: 18rem;
-    width: 36rem;
     max-width: 100%;
     border: .25rem solid cornflowerblue;
     border-radius: .5rem;
@@ -139,23 +148,46 @@ footer p {
     font-size: 1rem;
     text-align: left;
 }
+/*Media Queries*/
+
+  @media only screen and (max-width: 1482px) {
+    .grid {
+        grid-template: repeat(16, 10rem) / repeat(12, minmax(100px, 1fr));     
+    }
+    section#skills {
+        grid-area: 15 / 2 / 17 / 12;
+    }
+  }
+  @media only screen and (max-width: 1320px) {
+    article#projects {
+        grid-area: 3 / 1 / 14 / 13;
+        
+    }
+    section#skills {
+        grid-area: -4 / 1 / 16 / -2;
+    }
+  }
 
 
 /*Contact Container Styles*/
-main {
+main.contact {
+    position: relative;
+    top: 143px;
     height: 100%;
     margin: 1rem auto;
     display: grid;
-    grid-template: repeat(4, 1fr) / repeat(6, 1fr);
+    grid-template-columns: repeat( auto-fit, minmax(8rem, 1fr) );
     grid-gap: 1rem;
 }
 section.email {
-    grid-area: 1 / 2 / span 2 / span 2;
+    grid-area: 1 / 1 / span 2 / span 2;
     border: 1px dashed cornflowerblue;
+  
 }
 section.github {
     grid-area: 1 / 4 / span 2 / span 2;
     border: 1px dashed cornflowerblue;
+
 }
 img.logo {
     height: 4rem;
@@ -166,6 +198,14 @@ img.logo {
     margin-bottom: 1rem;
 }
 nav.return {
-    grid-area: 3 / 3 / span 1 / span 2;
+    position: relative;
+    top: 10rem;
 }
 
+@media only screen and (max-width: 790px) {
+    section.github {
+        grid-area: 3 / 1 / span 2 / span 2;
+        border: 1px dashed cornflowerblue;
+        width: 100%;
+    }
+}
